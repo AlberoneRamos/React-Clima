@@ -6,8 +6,11 @@ export default class Main extends React.Component{
         return(
             <div>
                 <Nav/>
-                <h2>Componente Principal</h2>
-                {this.props.children}
+                <div className="row">
+                    <div className="medium-6 large-4 columns small-centered">
+                        {this.props.children}
+                    </div>
+                </div>
             </div>
         );
     }
