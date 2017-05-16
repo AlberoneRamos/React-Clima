@@ -25,7 +25,7 @@ export default class Nav extends React.Component{
                                <input type="search" placeholder="Procurar a temperatura"/> 
                             </li>
                             <li>
-                                <input type="submit" className="button" value="procurar!"/>
+                                <input type="submit" className="button " value="procurar!"/>
                             </li>
                         </ul>
                     </form>

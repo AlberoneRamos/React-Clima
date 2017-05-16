@@ -5,7 +5,7 @@ export default class Sobre extends React.Component{
         return(
             <div>
                 <h1>Sobre o app</h1>
-                <p>Bem-vindo à página de informações!</p>
+                <p>Feito por Henrique Alberone, para o curso de React de Andrew Mead.</p>
             </div>
         );
     }

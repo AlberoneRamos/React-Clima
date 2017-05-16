@@ -25,7 +25,7 @@ export default class ClimaForm extends React.Component{
                     <option value='°F'>Graus Farenheit (°F)</option>
                     <option value='K'>Kelvin (K)</option>
                 </select><br/>
-                <input type="submit" className="button" value="Qual o clima?"/>
+                <button className="hollow button expanded ">Qual o clima?</button>
             </form>
         );
     }

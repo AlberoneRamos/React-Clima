@@ -35,7 +35,7 @@ export default class Clima extends React.Component{
         const state = this.state;
          function renderMessage(){
             if(state.isLoading){
-                return <h3>Consultando...</h3>
+                return <h3 className="text-center">Consultando...</h3>
             } else if(state.temperatura && state.cidade){
                 return <ClimaMessage {...state}/>;
             }
@@ -44,7 +44,7 @@ export default class Clima extends React.Component{
         return(
             
             <div>
-                <h3>Clima</h3>
+                <h1 className="text-center">Clima</h1>
                 <ClimaForm handleSearch={this.handleSearch.bind(this)}/>
                 {renderMessage()}
             </div>
