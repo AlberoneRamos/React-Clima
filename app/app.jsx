@@ -6,6 +6,7 @@ import Clima from './components/Clima';
 import Sobre from './components/Sobre';
 import Exemplos from './components/Exemplos';
 import styles from  'foundation-sites/dist/css/foundation.css';
+import './styles/app.css';
 $(document).foundation();
 
 

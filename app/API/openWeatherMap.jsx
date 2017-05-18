@@ -3,7 +3,7 @@ var axios = require('axios');
 const OPEN_WEATHER_MAP_URL = 'http://api.openweathermap.org/data/2.5/find?appid=57f8560e58b246c12a5df0f437973564';
 
 module.exports = {
-    getTemperatura:function(location,unit){
+    getTemperatura:function(location,unit='°C'){
         switch(unit){
             case('°C'):
                 unit = 'metric';

@@ -11,11 +11,38 @@ export default class Clima extends React.Component{
         };
     }
 
+    componentDidMount(){
+        var location = this.props.location.search.substring(10);
+        location = decodeURIComponent(location);
+        location = location.replace(/\w\S*/g,(location)=>{
+            return location.charAt(0).toUpperCase() + location.substr(1).toLowerCase();
+        });
+        if( location && location.length > 0){
+            this.handleSearch(location,'°C');
+            window.location.hash='#/';
+        }
+    }
+
+    componentWillReceiveProps(newProps){
+        var location = newProps.location.search.substring(10);
+        location = decodeURIComponent(location);
+        location = location.replace(/\w\S*/g,(location)=>{
+            return location.charAt(0).toUpperCase() + location.substr(1).toLowerCase();
+        });
+        if( location && location.length > 0){
+            this.handleSearch(location,'°C');
+            window.location.hash='#/';
+        }
+    }
+
     handleSearch(NomeCidade,unidade){
         var self = this;
         self.setState({
             isLoading:true,
-            mensagemErro: undefined
+            mensagemErro: undefined,
+            cidade: undefined,
+            temperatura: undefined,
+            unidade: undefined
         });
         openWeatherMap.getTemperatura(NomeCidade,unidade).then((temperatura) => {
             self.setState({
@@ -54,7 +81,7 @@ export default class Clima extends React.Component{
         return(
             
             <div>
-                <h1 className="text-center">Clima</h1>
+                <h1 className="text-center page-title">Clima</h1>
                 <ClimaForm handleSearch={this.handleSearch.bind(this)}/>
                 {renderMessage()}
                 {renderError()}
