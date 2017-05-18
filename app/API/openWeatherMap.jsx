@@ -20,13 +20,13 @@ module.exports = {
         var requestUrl = `${OPEN_WEATHER_MAP_URL}&q=${encodedLocation}&units=${unit}`;
         return axios.get(requestUrl).then((response) => {
             if(response.data.cod && response.data.count == 0){
-                throw new Error(response.data.message);
+                throw new Error('Localização inválida');
             } else{
                 console.log(response);
                 return response.data.list[0].main.temp;
             }
         },(response) => {
-            throw new Error(response.data.message);
+            throw new Error('Localização inválida');
         });
     }
 }

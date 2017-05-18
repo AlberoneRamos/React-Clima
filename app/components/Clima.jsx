@@ -2,7 +2,7 @@ import React from 'react';
 import ClimaForm from './ClimaForm';
 import ClimaMessage from './ClimaMessage';
 import openWeatherMap from '../API/openWeatherMap';
-
+import ModalErro from './ModalErro';
 export default class Clima extends React.Component{
     constructor(props){
         super();
@@ -14,7 +14,8 @@ export default class Clima extends React.Component{
     handleSearch(NomeCidade,unidade){
         var self = this;
         self.setState({
-            isLoading:true
+            isLoading:true,
+            mensagemErro: undefined
         });
         openWeatherMap.getTemperatura(NomeCidade,unidade).then((temperatura) => {
             self.setState({
@@ -25,11 +26,13 @@ export default class Clima extends React.Component{
             });
         },(errorMessage) => {
             self.setState({
-                isLoading:false
+                isLoading:false,
+                mensagemErro: errorMessage.message
             });
-            alert(errorMessage);
         });
     }
+    
+    
 
     render(){
         const state = this.state;
@@ -41,12 +44,20 @@ export default class Clima extends React.Component{
             }
         }
 
+       function renderError(){
+            if(typeof state.mensagemErro == 'string'){
+                return(
+                    <ModalErro mensagem={state.mensagemErro}/>
+                )
+            }
+        }
         return(
             
             <div>
                 <h1 className="text-center">Clima</h1>
                 <ClimaForm handleSearch={this.handleSearch.bind(this)}/>
                 {renderMessage()}
+                {renderError()}
             </div>
             
         );
